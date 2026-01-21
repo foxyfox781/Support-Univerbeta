@@ -119,21 +119,12 @@
     </p>
 
     <!-- FORMULAIRE -->
-    <form action="#" method="post">
-      <label for="name">Nom ou pseudo</label>
-      <input type="text" id="name" name="name" placeholder="Votre nom" required>
-
-      <label for="email">Adresse e-mail</label>
-      <input type="email" id="email" name="email" placeholder="exemple@domaine.com" required>
-
-      <label for="subject">Sujet</label>
-      <input type="text" id="subject" name="subject" placeholder="Objet de votre demande" required>
-
-      <label for="message">Message</label>
-      <textarea id="message" name="message" placeholder="Expliquez votre problème ou votre demande" required></textarea>
-
-      <button type="submit">Envoyer le message</button>
-    </form>
+<form action="https://formspree.io/f/539b7bb645b84c18a92ee55891657557" method="POST">
+  <input type="text" name="name" placeholder="Votre nom" required>
+  <input type="email" name="email" placeholder="Votre email" required>
+  <textarea name="message" placeholder="Votre message" required></textarea>
+  <button type="submit">Envoyer</button>
+</form>
 
     <div class="alt-contact">
       Ou contactez-nous directement par e-mail :  
