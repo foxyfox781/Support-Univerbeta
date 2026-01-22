@@ -141,14 +141,16 @@
   </section>
 
   <!-- BARRE DE RECHERCHE -->
-  <div class="search-box">
+<div class="search-box">
+  <form action="recherche.html" method="get">
     <input
       type="text"
-      id="searchInput"
+      name="q"
       placeholder="Rechercher un problème, un service ou une aide…"
-      onkeyup="filterCards()"
+      required
     >
-  </div>
+  </form>
+</div>
 
   <!-- CARTES -->
   <section class="options">
