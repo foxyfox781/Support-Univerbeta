@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Résultats de recherche – Univerbeta</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: #0f0f0f;
+      color: #fff;
+    }
+
+    header {
+      height: 70px;
+      background: #000;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    header a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    .search-box {
+      max-width: 600px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .search-box input {
+      width: 100%;
+      padding: 16px 20px;
+      font-size: 16px;
+      border-radius: 14px;
+      border: 1px solid #2a2a2a;
+      background: #161616;
+      color: #fff;
+      outline: none;
+    }
+
+    .results {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    .result {
+      background: #1a1a1a;
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 16px;
+    }
+
+    .result h2 {
+      margin: 0 0 8px;
+      font-size: 20px;
+    }
+
+    .result p {
+      color: #b5b5b5;
+      margin-bottom: 12px;
+    }
+
+    .result a {
+      color: #0071e3;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .empty {
+      text-align: center;
+      color: #888;
+      margin-top: 60px;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <a href="/">Univerbeta Support</a>
+</header>
+
+<!-- BARRE TOUJOURS PRÉSENTE -->
+<div class="search-box">
+  <form action="recherche.html" method="get">
+    <input type="text" name="q" id="searchInput">
+  </form>
+</div>
+
+<div class="results" id="results"></div>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get("q")?.toLowerCase() || "";
+  document.getElementById("searchInput").value = query;
+
+  const data = [
+    {
+      title: "Demande de déban Discord",
+      text: "Procédure pour demander un déban sur un serveur Univerbeta.",
+      link: "/discord/deban"
+    },
+    {
+      title: "Contacter le support",
+      text: "Joindre l’équipe Univerbeta pour une question ou un problème.",
+      link: "/contact"
+    },
+    {
+      title: "Conditions d’utilisation",
+      text: "Règles et conditions applicables aux services Univerbeta.",
+      link: "/terms"
+    },
+    {
+      title: "Statut des services",
+      text: "État de Chill Vibes, Femboy Vibes et Airblyx.",
+      link: "/statut"
+    }
+  ];
+
+  const resultsContainer = document.getElementById("results");
+  const matches = data.filter(item =>
+    item.title.toLowerCase().includes(query) ||
+    item.text.toLowerCase().includes(query)
+  );
+
+  if (matches.length === 0) {
+    resultsContainer.innerHTML = `
+      <div class="empty">
+        Aucun résultat pour "<strong>${query}</strong>"
+      </div>
+    `;
+  } else {
+    matches.forEach(item => {
+      resultsContainer.innerHTML += `
+        <div class="result">
+          <h2>${item.title}</h2>
+          <p>${item.text}</p>
+          <a href="${item.link}">Voir →</a>
+        </div>
+      `;
+    });
+  }
+</script>
+
+</body>
+</html>
